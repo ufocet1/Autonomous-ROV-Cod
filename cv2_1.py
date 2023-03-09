@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
-import cv2.cv as cv
+
+import cv2
 cap = cv2.VideoCapture(0)
 
 coords = []
