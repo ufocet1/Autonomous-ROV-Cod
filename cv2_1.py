@@ -1,3 +1,9 @@
+#!/usr/bin/python
+# -*- coding: latin-1 -*-
+import os, sys
+
+# File decoder for Raspberry Pi 
+
 import cv2
 import numpy as np
 
@@ -23,6 +29,10 @@ while(1):
 
     countours,_ = cv2.findContours(thresh, cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
 
+    max_area = 0
+    best_cnt = 0
+    
+    
     for cnt in countours:
         area = cv2.contourArea(cnt)
         if area > max_area:
@@ -37,6 +47,7 @@ while(1):
 
     #Save the coords every frame on a list
     #Here you can make more conditions if you don't want repeated coordinates
+    points = []
     points.append(coord) 
 
     cv2.imshow('frame',frame)
