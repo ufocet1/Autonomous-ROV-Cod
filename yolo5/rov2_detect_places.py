@@ -4,7 +4,7 @@ import cv2
 
 inc=0
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
 width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -15,6 +15,15 @@ print(f"Camera input width: {width}, height: {height}")
 cap.set(cv2.CAP_PROP_BUFFERSIZE, 10)
 
 ret, frame = cap.read()
+
+qq = 1
+while qq:
+    try:
+        if frame == None:
+            print("a")
+            ret, frame = cap.read()
+    except:
+        qq=0
 
 frame = cv2.resize(frame, (800, 600))
 
@@ -55,8 +64,8 @@ if len(values):
     print(box_x,box_y)
     
     #area = [[(500,300),(1420,300),(1920,300)],[(500,780),(1420,780),(1920,780)],[(500,1080),(1420,1080),(1920,1080)]]
-    area_x = [200,600]
-    area_y = [150,450]
+    area_x = [150,650]
+    area_y = [100,500]
     
     place_x = 0
     place_y = 0
@@ -80,7 +89,31 @@ if len(values):
     print(place)
 
 
-
+# olay su:
+#
+# robot objeyi gorene kadar wander yapacak
+#
+# ben kamerayi 9a boldum
+# 1 | 2 | 3
+# 4 | 5 | 6
+# 7 | 8 | 9
+#
+# Robotun sunu yapmasi lazim:
+#
+# 1, 4 veya 7de obje var iken sola donup objeyi 2, 5 veya 8e almasi lazim
+# 3, 5 veya 9da obje var iken saga donup objeyi 2, 5 veya 8e almasi lazim
+# 
+# diyelim ki obje 2 veya 5te,
+#   makinenin objeyi 8e alana kadar ilerlemesi lazim
+#
+# 8e gelince ise robot objeyi goremeyene kadar yavasca ileri gitmeli
+# 
+# artik obje gorunurde yoksa robot 90 derece saga veya sola donecek, objeyi algilayip algilamadigina bakacak
+#   eger 2 veya 5te gorurse (cok dusuk ve sacma bir olasilik), yine 8e gecene kadar ilerlemeli
+#   eger 8de gorurse yavasca ilerlemeli az once yaptigi gibi algilamayana kadar
+#   eger gormuyorsa sikinti yok
+#
+#   artik gorunurde degilse inis yapacak
 
 
 
