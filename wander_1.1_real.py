@@ -7,11 +7,14 @@ import numpy as np
 #Rovinfo denenmeli
 time_record = []
 velocity_record = []
+
+sleep_duration = 0.5
 while True:
     time_record.append(time.time())
     velocity_record.append(rovpy.hiz())
-    time.sleep(0.5)
+    time.sleep(sleep_duration)
 
+delta = sleep_duration
 
 def wander_1_1_real():
     direction = "null"
@@ -21,6 +24,7 @@ def wander_1_1_real():
             rovpy.yaw(0.5)
         if detectWall == False:
             direction = "right"
+            origin_angle = rovpy.rovinfo()
 
     while direction == "right":
         while detectWall == False:
@@ -35,9 +39,9 @@ def wander_1_1_real():
             rovpy.lateral(speed)
         if detectWall == True and rovpy.hiz() == 0:
             t_final = time.time()
-            range_of_vision = distance(t_initial, t_final)
+            range_of_vision = distance(t_initial, t_final, delta)
             #rov.rotate(90)
-            while rovpy.rovinfo() != 90:#BURASI DEĞİŞTİRİLECEK YANİ belli bi yöne bakana kadar döncek olarak VEYA belli bi hızda belli bi süre boyunca
+            while rovpy.rovinfo() -origin_angle!= 90:#BURASI DEĞİŞTİRİLECEK YANİ belli bi yöne bakana kadar döncek olarak VEYA belli bi hızda belli bi süre boyunca
                 rovpy.yaw(0.5)
 
             """t_new_initial = time.time()
@@ -70,9 +74,9 @@ def wander_1_1_real():
             rovpy.lateral(speed)
         if detectWall == True and rovpy.hiz() == 0:
             t_final = rovpy.info()
-            range_of_vision = distance(t_initial, t_final)
+            range_of_vision = distance(t_initial, t_final, delta)
             #rov.rotate(-90)
-            while rovpy.rovinfo() != -90:#BURASI DEĞİŞTİRİLECEK YANİ belli bi yöne bakana kadar döncek olarak VEYA belli bi hızda belli bi süre boyunca
+            while rovpy.rovinfo() - origin_angle != -90:#BURASI DEĞİŞTİRİLECEK YANİ belli bi yöne bakana kadar döncek olarak VEYA belli bi hızda belli bi süre boyunca
                 rovpy.yaw(-0.5)
             a = 0
             timer = BoolTimer(1.0)
