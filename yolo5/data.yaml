@@ -7,7 +7,7 @@ names: ['circle']
 
 roboflow:
   workspace: test-xsnip
-  project: red-circle-1
+  project: red-circle-2
   version: 1
   license: CC BY 4.0
-  url: https://universe.roboflow.com/test-xsnip/red-circle-1/dataset/1
+  url: https://universe.roboflow.com/test-xsnip/red-circle-2/dataset/1

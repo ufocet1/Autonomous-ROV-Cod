@@ -1,8 +1,8 @@
 
-Red Circle 1 - v1 2023-04-19 2:39pm
+Red Circle 2 - v1 2023-04-26 3:39pm
 ==============================
 
-This dataset was exported via roboflow.com on April 19, 2023 at 11:39 AM GMT
+This dataset was exported via roboflow.com on April 26, 2023 at 12:40 PM GMT
 
 Roboflow is an end-to-end computer vision platform that helps you
 * collaborate with your team on computer vision projects
@@ -17,7 +17,7 @@ visit https://github.com/roboflow/notebooks
 
 To find over 100k other datasets and pre-trained models, visit https://universe.roboflow.com
 
-The dataset includes 132 images.
+The dataset includes 63 images.
 Circle are annotated in YOLO v5 PyTorch format.
 
 The following pre-processing was applied to each image:
